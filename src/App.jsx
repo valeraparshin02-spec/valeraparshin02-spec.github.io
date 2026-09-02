@@ -164,31 +164,31 @@ function App() {
 
       sceneContext = gsap.context(() => {
         sceneMedia = gsap.matchMedia()
-        const portal = siteShell.querySelector('.portal-transition')
-        const rings = portal?.querySelectorAll('.portal-ring')
-        const travelToScene = (scene) => {
-          if (!portal || !rings?.length) return
-          const color = getComputedStyle(document.documentElement).getPropertyValue(`--${scene.dataset.scene}`).trim()
-          const ringColor = scene.dataset.scene === 'milk' || scene.dataset.scene === 'paper' ? 'var(--ink)' : 'var(--acid)'
-          const timeline = gsap.timeline({ defaults: { ease: 'power3.inOut' } })
-
-          gsap.killTweensOf([portal, ...rings])
-          timeline
-            .set(portal, { autoAlpha: 1, '--portal-color': color, '--portal-ring': ringColor, clipPath: 'circle(0% at 50% 50%)' })
-            .set(rings, { autoAlpha: 1, scale: 0.06, rotate: -14, yPercent: 6 })
-            .to(portal, { clipPath: 'circle(150% at 50% 50%)', duration: 0.54 }, 0)
-            .to(rings, { scale: 5.5, rotate: 16, yPercent: -6, autoAlpha: 0, duration: 0.52, stagger: 0.055, ease: 'power3.out' }, 0)
-            .to(portal, { autoAlpha: 0, duration: 0.12, ease: 'none' }, 0.54)
+        const createCameraDive = ({ scale, blur }) => {
+          gsap.utils.toArray('[data-scene]').forEach((scene) => {
+            gsap.fromTo(scene, {
+              autoAlpha: 0.28,
+              scale,
+              filter: `blur(${blur}px)`,
+              transformOrigin: '50% 50%',
+            }, {
+              autoAlpha: 1,
+              scale: 1,
+              filter: 'blur(0px)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: scene,
+                start: 'top 125%',
+                end: 'top 8%',
+                scrub: 1.05,
+                invalidateOnRefresh: true,
+              },
+            })
+          })
         }
 
-        gsap.utils.toArray('[data-scene]').forEach((scene) => {
-          ScrollTrigger.create({
-            trigger: scene,
-            start: 'top 72%',
-            onEnter: () => travelToScene(scene),
-            onEnterBack: () => travelToScene(scene),
-          })
-        })
+        sceneMedia.add('(min-width: 720px)', () => createCameraDive({ scale: 0.46, blur: 10 }))
+        sceneMedia.add('(max-width: 719px)', () => createCameraDive({ scale: 0.64, blur: 6 }))
       }, siteShell)
     })
 
@@ -374,12 +374,6 @@ function App() {
           {!TELEGRAM_URL && <small className="contact-todo">Точная ссылка на Telegram будет добавлена перед публикацией.</small>}
         </section>
       </main>
-
-      <div className="portal-transition" aria-hidden="true">
-        <span className="portal-ring portal-ring--outer" />
-        <span className="portal-ring portal-ring--middle" />
-        <span className="portal-ring portal-ring--inner" />
-      </div>
 
       <TelegramLink className="floating-contact" data-magnetic>
         <span className="floating-contact-dot" aria-hidden="true" />

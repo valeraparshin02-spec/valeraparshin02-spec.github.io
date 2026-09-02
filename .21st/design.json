@@ -87,8 +87,8 @@
       "reason": "Valeriy wants the site itself to prove a higher level of web craft; motion remains functional by keeping the message, cases, and contact path readable."
     },
     {
-      "decision": "Use a fixed portal transition to reveal every major portfolio section: nested browser frames expand through the viewport in the color of the incoming scene.",
-      "reason": "The page should feel like travelling deeper into a working website without pinning the scroll or reducing the mobile experience to a simpler effect."
+      "decision": "Use a continuous camera-dive transition: each major section begins distant and soft, then scales into its final surface in direct response to scrolling.",
+      "reason": "The intended feeling is a Google Earth-style descent into the next layer of the site, not a separate overlay or a discrete card animation."
     }
   ],
   "evidence": [],
