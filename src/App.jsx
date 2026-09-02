@@ -230,11 +230,11 @@ function App() {
         <section className="hero" id="top">
           <div className="hero-index" aria-hidden="true">01 / Сайт как инструмент продаж</div>
           <div className="hero-copy" data-reveal>
-            <p className="eyebrow"><i aria-hidden="true" />Сайт есть, а заявок мало?</p>
+            <p className="eyebrow"><i aria-hidden="true" />Маркетинг, сайт и запуск в одной связке</p>
             <h1>
-              <span className="hero-line"><span>Сайт есть.</span></span>
-              <span className="hero-line"><span>Заявок</span></span>
-              <span className="hero-line"><em>нет.</em></span>
+              <span className="hero-line"><span>Трафик —</span></span>
+              <span className="hero-line"><span>не главное.</span></span>
+              <span className="hero-line"><em>Главное — заявка.</em></span>
             </h1>
           </div>
           <div className="hero-aside" data-reveal>
@@ -259,8 +259,8 @@ function App() {
           </div>
           <span className="hero-orbit" aria-hidden="true" />
           <div className="hero-note" data-reveal>
-            <span>Что получаете на выходе:</span>
-            <strong>понятный оффер, путь к заявке и сайт, встроенный в продажи.</strong>
+            <span>Красиво — не достаточно:</span>
+            <strong>сайт должен зарабатывать, а не просто хорошо выглядеть.</strong>
           </div>
         </section>
 
