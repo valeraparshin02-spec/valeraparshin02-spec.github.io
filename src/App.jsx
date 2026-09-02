@@ -179,7 +179,7 @@ function App() {
               scrollTrigger: {
                 trigger: scene,
                 start: 'top 125%',
-                end: 'top 8%',
+                end: scene.id === 'contact' ? 'bottom bottom' : 'top 8%',
                 scrub: 1.05,
                 invalidateOnRefresh: true,
               },
