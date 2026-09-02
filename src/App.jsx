@@ -160,6 +160,11 @@ function App() {
             <strong>6</strong>
             <span>лет<br />в маркетинге</span>
           </div>
+          <div className="hero-stickers" aria-hidden="true">
+            <span className="hero-sticker hero-sticker--roi">ROI</span>
+            <span className="hero-sticker hero-sticker--arrow">↗</span>
+            <span className="hero-sticker hero-sticker--spark">✦</span>
+          </div>
           <div className="hero-note" data-reveal>
             <span>От маркетинговой стратегии до запуска:</span>
             <strong>не просто экран, а сайт, встроенный в продажи.</strong>
@@ -168,8 +173,12 @@ function App() {
 
         <div className="signal-strip" aria-hidden="true">
           <div className="signal-track">
-            <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
-            <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+            <div className="signal-group">
+              <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+            </div>
+            <div className="signal-group">
+              <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+            </div>
           </div>
         </div>
 
@@ -273,6 +282,11 @@ function App() {
           {!TELEGRAM_URL && <small className="contact-todo">Точная ссылка на Telegram будет добавлена перед публикацией.</small>}
         </section>
       </main>
+
+      <TelegramLink className="floating-contact">
+        <span className="floating-contact-dot" aria-hidden="true" />
+        Написать мне <ArrowIcon />
+      </TelegramLink>
 
       <footer className="footer">
         <span>Валерий · сайты и digital</span>
