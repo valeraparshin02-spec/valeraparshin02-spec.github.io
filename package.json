@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:github": "vite build --config vite.github.config.js --outDir dist-github",
     "start": "wrangler dev --config dist/server/wrangler.json"
   },
   "dependencies": {
