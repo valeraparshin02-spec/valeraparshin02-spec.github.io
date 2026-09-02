@@ -164,51 +164,31 @@ function App() {
 
       sceneContext = gsap.context(() => {
         sceneMedia = gsap.matchMedia()
-        const createCaseScenes = (depth) => {
-          gsap.utils.toArray('.case').forEach((caseElement, index) => {
-            const gallery = caseElement.querySelector('.case-gallery')
-            const copy = caseElement.querySelector('.case-copy')
-            const direction = index % 2 === 0 ? 1 : -1
-            const scene = gsap.timeline({
-              scrollTrigger: {
-                trigger: caseElement,
-                start: 'top 88%',
-                end: 'top 43%',
-                scrub: 0.65,
-                invalidateOnRefresh: true,
-              },
-            })
+        const portal = siteShell.querySelector('.portal-transition')
+        const rings = portal?.querySelectorAll('.portal-ring')
+        const travelToScene = (scene) => {
+          if (!portal || !rings?.length) return
+          const color = getComputedStyle(document.documentElement).getPropertyValue(`--${scene.dataset.scene}`).trim()
+          const ringColor = scene.dataset.scene === 'milk' || scene.dataset.scene === 'paper' ? 'var(--ink)' : 'var(--acid)'
+          const timeline = gsap.timeline({ defaults: { ease: 'power3.inOut' } })
 
-            scene
-              .fromTo(gallery, {
-                autoAlpha: 0.16,
-                rotationX: 9 * depth,
-                rotationY: direction * 13 * depth,
-                z: -180 * depth,
-                scale: 0.88 + (0.06 * (1 - depth)),
-              }, {
-                autoAlpha: 1,
-                rotationX: 0,
-                rotationY: 0,
-                z: 0,
-                scale: 1,
-                ease: 'none',
-              }, 0)
-              .fromTo(copy, {
-                autoAlpha: 0,
-                y: 46 * depth,
-                z: -70 * depth,
-              }, {
-                autoAlpha: 1,
-                y: 0,
-                z: 0,
-                ease: 'none',
-              }, 0.16)
-          })
+          gsap.killTweensOf([portal, ...rings])
+          timeline
+            .set(portal, { autoAlpha: 1, '--portal-color': color, '--portal-ring': ringColor, clipPath: 'circle(0% at 50% 50%)' })
+            .set(rings, { autoAlpha: 1, scale: 0.06, rotate: -14, yPercent: 6 })
+            .to(portal, { clipPath: 'circle(150% at 50% 50%)', duration: 0.54 }, 0)
+            .to(rings, { scale: 5.5, rotate: 16, yPercent: -6, autoAlpha: 0, duration: 0.52, stagger: 0.055, ease: 'power3.out' }, 0)
+            .to(portal, { autoAlpha: 0, duration: 0.12, ease: 'none' }, 0.54)
         }
 
-        sceneMedia.add('(min-width: 900px)', () => createCaseScenes(1))
-        sceneMedia.add('(max-width: 899px)', () => createCaseScenes(0.58))
+        gsap.utils.toArray('[data-scene]').forEach((scene) => {
+          ScrollTrigger.create({
+            trigger: scene,
+            start: 'top 72%',
+            onEnter: () => travelToScene(scene),
+            onEnterBack: () => travelToScene(scene),
+          })
+        })
       }, siteShell)
     })
 
@@ -294,7 +274,7 @@ function App() {
           </div>
         </div>
 
-        <section className="positioning section" id="approach" aria-labelledby="approach-title" data-reveal>
+        <section className="positioning section" id="approach" aria-labelledby="approach-title" data-reveal data-scene="cobalt">
           <div className="positioning-copy">
             <p className="eyebrow">Моя сильная сторона</p>
             <h2 id="approach-title">Смотрю на сайт как на часть маркетинга, а не как на отдельную картинку.</h2>
@@ -316,7 +296,7 @@ function App() {
           </dl>
         </section>
 
-        <section className="cases section" id="cases" aria-labelledby="cases-title" data-reveal>
+        <section className="cases section" id="cases" aria-labelledby="cases-title" data-reveal data-scene="milk">
           <div className="section-heading">
             <p className="eyebrow">Выбранные работы</p>
             <h2 id="cases-title">Живые сайты, которые можно открыть</h2>
@@ -355,7 +335,7 @@ function App() {
           </div>
         </section>
 
-        <section className="services section" id="services" aria-labelledby="services-title" data-reveal>
+        <section className="services section" id="services" aria-labelledby="services-title" data-reveal data-scene="paper">
           <div className="section-heading compact">
             <p className="eyebrow">Чем могу помочь</p>
             <h2 id="services-title">Соединить маркетинг, сайт и запуск в одном проекте</h2>
@@ -371,7 +351,7 @@ function App() {
           </div>
         </section>
 
-        <section className="process section" id="process" aria-labelledby="process-title" data-reveal>
+        <section className="process section" id="process" aria-labelledby="process-title" data-reveal data-scene="paper">
           <div className="section-heading compact">
             <p className="eyebrow">Как строится работа</p>
             <h2 id="process-title">Один человек, один контекст, четыре понятных этапа</h2>
@@ -386,7 +366,7 @@ function App() {
           </ol>
         </section>
 
-        <section className="contact section" id="contact" aria-labelledby="contact-title" data-reveal>
+        <section className="contact section" id="contact" aria-labelledby="contact-title" data-reveal data-scene="ink">
           <p className="eyebrow">Есть задача?</p>
           <h2 id="contact-title">Покажите, что нужно сделать. Я предложу понятный следующий шаг.</h2>
           <p className="contact-copy">Можно прислать ссылку на текущий сайт, короткое ТЗ или просто описать задачу своими словами.</p>
@@ -394,6 +374,12 @@ function App() {
           {!TELEGRAM_URL && <small className="contact-todo">Точная ссылка на Telegram будет добавлена перед публикацией.</small>}
         </section>
       </main>
+
+      <div className="portal-transition" aria-hidden="true">
+        <span className="portal-ring portal-ring--outer" />
+        <span className="portal-ring portal-ring--middle" />
+        <span className="portal-ring portal-ring--inner" />
+      </div>
 
       <TelegramLink className="floating-contact" data-magnetic>
         <span className="floating-contact-dot" aria-hidden="true" />

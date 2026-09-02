@@ -87,8 +87,8 @@
       "reason": "Valeriy wants the site itself to prove a higher level of web craft; motion remains functional by keeping the message, cases, and contact path readable."
     },
     {
-      "decision": "Give every case a short 3D depth-scene on entry, using perspective, layered frames, and responsive scroll interpolation without pinning the page.",
-      "reason": "The portfolio should feel immersive project-by-project while preserving a fast, natural scroll on desktop and mobile."
+      "decision": "Use a fixed portal transition to reveal every major portfolio section: nested browser frames expand through the viewport in the color of the incoming scene.",
+      "reason": "The page should feel like travelling deeper into a working website without pinning the scroll or reducing the mobile experience to a simpler effect."
     }
   ],
   "evidence": [],
