@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "project": {
+    "name": "portfolio-site",
+    "productType": "personal portfolio",
+    "stack": ["React", "Vite", "CSS"]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "paper": "#f3efe7",
+      "ink": "#151815",
+      "accent": "#2852d7",
+      "line": "#cfcbc2"
+    },
+    "typography": {
+      "display": "Georgia, serif",
+      "body": "Arial, sans-serif"
+    },
+    "spacing": {},
+    "radius": {
+      "small": "8px",
+      "medium": "18px"
+    },
+    "shadows": {},
+    "motion": {
+      "duration": "180ms"
+    },
+    "density": "comfortable"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Mobile-first responsive layout",
+      "Real case links and screenshots",
+      "Visible keyboard focus",
+      "Truthful project copy"
+    ],
+    "avoid": [
+      "Glassmorphism",
+      "Invented metrics",
+      "Decorative gradients",
+      "Excessive cards"
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Use an editorial warm-paper direction with dark ink typography and a restrained cobalt accent.",
+      "reason": "The portfolio needs to feel confident and authored while keeping project screenshots central."
+    },
+    {
+      "decision": "Present every case inside a quiet browser frame and keep all case facts in one data module.",
+      "reason": "Live work remains easy to scan, verify, and update."
+    },
+    {
+      "decision": "Use the real Telegram portrait as a compact editorial identity block in the hero.",
+      "reason": "The portfolio should feel personal without competing with the large headline or case imagery."
+    }
+  ],
+  "evidence": [],
+  "generatedAt": "2026-09-02T11:46:43.180Z"
+}

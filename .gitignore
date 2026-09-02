@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.next/
+.vinext/
+.wrangler/
+.capture-profile/
+.edge-capture/
+.qa-profile-desktop/
+.qa-profile-mobile/
+.qa/
+*.local
