@@ -104,8 +104,8 @@ function App() {
 
       <header className="header">
         <a className="wordmark" href="#top" aria-label="Наверх">
-          <span>Валерий Паршин</span>
-          <small>сайты / digital</small>
+          <span><i aria-hidden="true" />Валерий Паршин</span>
+          <small>маркетинг / web / digital</small>
         </a>
         <nav className="nav" aria-label="Основная навигация">
           <a href="#approach">Подход</a>
@@ -118,10 +118,10 @@ function App() {
 
       <main id="main">
         <section className="hero" id="top">
-          <div className="hero-index" aria-hidden="true">Портфолио · 2026</div>
+          <div className="hero-index" aria-hidden="true">01 / Портфолио · 2026</div>
           <div className="hero-copy">
-            <p className="eyebrow">Ведущий маркетолог · сайты · запуск</p>
-            <h1>Сайты под задачу бизнеса — <em>от стратегии</em> до работающего запуска</h1>
+            <p className="eyebrow"><i aria-hidden="true" />Ведущий маркетолог · сайты · запуск</p>
+            <h1>Сайты, которые <em>работают.</em></h1>
           </div>
           <div className="hero-aside">
             <figure className="hero-portrait">
@@ -134,11 +134,19 @@ function App() {
             <p>Я Валерий. Беру проект целиком: от понимания аудитории и оффера до сайта, аналитики и запуска.</p>
             <a className="text-link" href="#cases">Смотреть работы <ArrowIcon /></a>
           </div>
+          <div className="hero-signal" aria-label="6 лет в маркетинге">
+            <strong>6</strong>
+            <span>лет<br />в маркетинге</span>
+          </div>
           <div className="hero-note">
-            <span>Подхожу, если нужен не просто экран,</span>
-            <strong>а сайт, встроенный в маркетинг и продажи.</strong>
+            <span>От маркетинговой стратегии до запуска:</span>
+            <strong>не просто экран, а сайт, встроенный в продажи.</strong>
           </div>
         </section>
+
+        <div className="signal-strip" aria-hidden="true">
+          <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+        </div>
 
         <section className="positioning section" id="approach" aria-labelledby="approach-title">
           <div className="positioning-copy">
