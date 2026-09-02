@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cases } from './data/cases.js'
 import { TELEGRAM_URL } from './config.js'
 
@@ -98,6 +98,28 @@ function CaseGallery({ item }) {
 }
 
 function App() {
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return undefined
+
+    document.documentElement.classList.add('motion-ready')
+    const targets = document.querySelectorAll('[data-reveal]')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.14 })
+
+    targets.forEach((target) => observer.observe(target))
+    return () => {
+      observer.disconnect()
+      document.documentElement.classList.remove('motion-ready')
+    }
+  }, [])
+
   return (
     <div className="site-shell">
       <a className="skip-link" href="#main">К содержанию</a>
@@ -119,11 +141,11 @@ function App() {
       <main id="main">
         <section className="hero" id="top">
           <div className="hero-index" aria-hidden="true">01 / Портфолио · 2026</div>
-          <div className="hero-copy">
+          <div className="hero-copy" data-reveal>
             <p className="eyebrow"><i aria-hidden="true" />Ведущий маркетолог · сайты · запуск</p>
             <h1>Сайты, которые <em>работают.</em></h1>
           </div>
-          <div className="hero-aside">
+          <div className="hero-aside" data-reveal>
             <figure className="hero-portrait">
               <img src="/valeriy-parshin.jpg" alt="Валерий Паршин" />
               <figcaption>
@@ -134,21 +156,24 @@ function App() {
             <p>Я Валерий. Беру проект целиком: от понимания аудитории и оффера до сайта, аналитики и запуска.</p>
             <a className="text-link" href="#cases">Смотреть работы <ArrowIcon /></a>
           </div>
-          <div className="hero-signal" aria-label="6 лет в маркетинге">
+          <div className="hero-signal" aria-label="6 лет в маркетинге" data-reveal>
             <strong>6</strong>
             <span>лет<br />в маркетинге</span>
           </div>
-          <div className="hero-note">
+          <div className="hero-note" data-reveal>
             <span>От маркетинговой стратегии до запуска:</span>
             <strong>не просто экран, а сайт, встроенный в продажи.</strong>
           </div>
         </section>
 
         <div className="signal-strip" aria-hidden="true">
-          <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+          <div className="signal-track">
+            <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+            <span>Стратегия</span><i>✦</i><span>Оффер</span><i>✦</i><span>Сайт</span><i>✦</i><span>Запуск</span><i>✦</i><span>Заявки</span>
+          </div>
         </div>
 
-        <section className="positioning section" id="approach" aria-labelledby="approach-title">
+        <section className="positioning section" id="approach" aria-labelledby="approach-title" data-reveal>
           <div className="positioning-copy">
             <p className="eyebrow">Моя сильная сторона</p>
             <h2 id="approach-title">Смотрю на сайт как на часть маркетинга, а не как на отдельную картинку.</h2>
@@ -170,7 +195,7 @@ function App() {
           </dl>
         </section>
 
-        <section className="cases section" id="cases" aria-labelledby="cases-title">
+        <section className="cases section" id="cases" aria-labelledby="cases-title" data-reveal>
           <div className="section-heading">
             <p className="eyebrow">Выбранные работы</p>
             <h2 id="cases-title">Живые сайты, которые можно открыть</h2>
@@ -179,7 +204,7 @@ function App() {
 
           <div className="case-list">
             {cases.map((item) => (
-              <article className="case" key={item.id}>
+              <article className="case" key={item.id} data-reveal>
                 <CaseGallery item={item} />
                 <div className="case-copy">
                   <div className="case-meta">
@@ -209,7 +234,7 @@ function App() {
           </div>
         </section>
 
-        <section className="services section" id="services" aria-labelledby="services-title">
+        <section className="services section" id="services" aria-labelledby="services-title" data-reveal>
           <div className="section-heading compact">
             <p className="eyebrow">Чем могу помочь</p>
             <h2 id="services-title">Соединить маркетинг, сайт и запуск в одном проекте</h2>
@@ -225,7 +250,7 @@ function App() {
           </div>
         </section>
 
-        <section className="process section" id="process" aria-labelledby="process-title">
+        <section className="process section" id="process" aria-labelledby="process-title" data-reveal>
           <div className="section-heading compact">
             <p className="eyebrow">Как строится работа</p>
             <h2 id="process-title">Один человек, один контекст, четыре понятных этапа</h2>
@@ -240,7 +265,7 @@ function App() {
           </ol>
         </section>
 
-        <section className="contact section" id="contact" aria-labelledby="contact-title">
+        <section className="contact section" id="contact" aria-labelledby="contact-title" data-reveal>
           <p className="eyebrow">Есть задача?</p>
           <h2 id="contact-title">Покажите, что нужно сделать. Я предложу понятный следующий шаг.</h2>
           <p className="contact-copy">Можно прислать ссылку на текущий сайт, короткое ТЗ или просто описать задачу своими словами.</p>
