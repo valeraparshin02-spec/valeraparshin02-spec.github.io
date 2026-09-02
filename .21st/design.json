@@ -87,8 +87,8 @@
       "reason": "Valeriy wants the site itself to prove a higher level of web craft; motion remains functional by keeping the message, cases, and contact path readable."
     },
     {
-      "decision": "Use a desktop cinematic scroll scene that pins the hero briefly and reshapes its headline, portrait, stickers, and orbit before the cases.",
-      "reason": "The selected next step is macro-motion: a directed transition gives the portfolio a showreel feeling without hiding the work or making mobile navigation harder."
+      "decision": "Give every case a short 3D depth-scene on entry, using perspective, layered frames, and responsive scroll interpolation without pinning the page.",
+      "reason": "The portfolio should feel immersive project-by-project while preserving a fast, natural scroll on desktop and mobile."
     }
   ],
   "evidence": [],
