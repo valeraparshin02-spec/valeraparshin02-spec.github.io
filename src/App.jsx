@@ -150,6 +150,30 @@ function App() {
     hero?.addEventListener('pointermove', onHeroPointerMove)
     hero?.addEventListener('pointerleave', resetHeroPointer)
 
+    const navigationLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'))
+    const getLayoutTop = (target) => {
+      let top = 0
+      let current = target
+      while (current) {
+        top += current.offsetTop || 0
+        current = current.offsetParent
+      }
+      return top
+    }
+    const navigationHandlers = navigationLinks.map((link) => {
+      const onNavigate = (event) => {
+        const target = document.querySelector(link.getAttribute('href'))
+        if (!target) return
+
+        event.preventDefault()
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 0
+        window.history.pushState(null, '', link.getAttribute('href'))
+        window.scrollTo({ top: Math.max(0, getLayoutTop(target) - headerHeight - 18), behavior: 'smooth' })
+      }
+      link.addEventListener('click', onNavigate)
+      return { link, onNavigate }
+    })
+
     let sceneContext
     let sceneMedia
     let sceneDisposed = false
@@ -204,6 +228,7 @@ function App() {
         target.removeEventListener('pointermove', onPointerMove)
         target.removeEventListener('pointerleave', resetMagnet)
       })
+      navigationHandlers.forEach(({ link, onNavigate }) => link.removeEventListener('click', onNavigate))
       document.documentElement.classList.remove('motion-ready')
     }
   }, [])

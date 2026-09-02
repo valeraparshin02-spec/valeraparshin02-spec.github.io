@@ -84,7 +84,7 @@ h1 em::after { position: absolute; z-index: -1; right: -0.06em; bottom: -0.09em;
 .signal-group { display: flex; min-width: 100vw; align-items: center; justify-content: space-around; gap: clamp(0.85rem, 2.3vw, 2rem); padding: 0 clamp(1rem, 3vw, 3rem); }
 .signal-strip span { font: 600 clamp(0.65rem, 1.3vw, 0.84rem)/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; }.signal-strip i { color: var(--acid); font-style: normal; }
 
-.section { padding: 5.3rem 1.25rem; }
+.section { padding: 5.3rem 1.25rem; scroll-margin-top: 6.5rem; }
 .positioning { display: grid; gap: 3rem; border-bottom: var(--line); background: var(--cobalt); }
 .positioning-copy { color: var(--milk); }.positioning .eyebrow { color: var(--acid); }
 .positioning-copy h2 { max-width: 13ch; margin-bottom: 1.35rem; font-size: clamp(2rem, 8.7vw, 4.8rem); line-height: 0.98; }
