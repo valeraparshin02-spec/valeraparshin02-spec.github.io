@@ -1,7 +1,45 @@
 export const cases = [
   {
-    id: 'twin-line',
+    id: 'neo-altera-estate',
     number: '01',
+    name: 'Neo Altera Estate',
+    type: 'Сайт агентства недвижимости',
+    url: 'https://alteraestate.ru/',
+    displayUrl: 'alteraestate.ru',
+    image: '/cases/neo-altera-estate.jpg',
+    alt: 'Последняя версия главной страницы Neo Altera Estate',
+    summary:
+      'Полный редизайн основного сайта агентства недвижимости: премиальная главная с космическим образом Казани, каталогом и понятным путём к заявке.',
+    contribution:
+      'Полная разработка сайта — стратегия, структура, дизайн, адаптив, каталог, формы и техническая реализация.',
+    delivered: [
+      'Новая визуальная концепция и космический hero-блок',
+      'Каталог недвижимости и страницы направлений',
+      'Адаптив, формы, аналитика и путь к обращению',
+    ],
+  },
+  {
+    id: 'altera-it',
+    number: '02',
+    name: 'Altera IT',
+    type: 'Корпоративный IT-сайт',
+    url: 'https://alterait.com/',
+    displayUrl: 'alterait.com',
+    image: '/cases/altera-it.jpg',
+    alt: 'Актуальная версия сайта Altera IT',
+    summary:
+      'Корпоративный сайт IT-команды с выразительной арт-дирекцией, презентацией услуг и понятным маршрутом к заявке.',
+    contribution:
+      'Разработка и упаковка корпоративного сайта — структура, визуальная концепция, адаптив и пользовательский путь.',
+    delivered: [
+      'Концепция и структура корпоративного сайта',
+      'Анимационная подача услуг и преимуществ',
+      'Адаптивные экраны и формы обращения',
+    ],
+  },
+  {
+    id: 'twin-line',
+    number: '03',
     name: 'Твин Лайн',
     type: 'Сайт, каталог и заявки',
     url: 'https://twin-line.ru/',
@@ -19,7 +57,7 @@ export const cases = [
   },
   {
     id: 'dom-na-tufana',
-    number: '02',
+    number: '04',
     name: 'Дом на Туфана',
     type: 'Сайт жилого комплекса',
     url: 'https://domnatufana.ru/',
@@ -39,7 +77,7 @@ export const cases = [
   },
   {
     id: 'taro-hackersha',
-    number: '03',
+    number: '05',
     name: 'Таро Хакерша',
     type: 'Экспертный продукт',
     url: 'https://tarohackersha.ru/',
@@ -56,7 +94,7 @@ export const cases = [
   },
   {
     id: 'altera-novostroy',
-    number: '04',
+    number: '06',
     name: 'Альтера · новостройки',
     type: 'Недвижимость',
     url: 'https://altera-novostroy.tilda.ws/',
@@ -73,7 +111,7 @@ export const cases = [
   },
   {
     id: 'altera-vtorichka',
-    number: '05',
+    number: '07',
     name: 'Альтера · вторичка',
     type: 'Недвижимость',
     url: 'https://altera-vtorichka.tilda.ws/',
