@@ -29,6 +29,12 @@ const process = [
   ['04', 'Проверка', 'Прохожу ключевые сценарии на телефоне и компьютере перед передачей.'],
 ]
 
+const marketingTasks = [
+  ['01', 'Маркетинговый аудит', 'Разбираю текущую точку: где теряется клиент, что мешает заявке и какие шаги дадут наибольший эффект.'],
+  ['02', 'Оффер и воронка', 'Помогаю сформулировать, кому и что говорить, а также выстроить путь клиента до целевого действия.'],
+  ['03', 'План запуска', 'Собираю приоритеты, точки аналитики и понятное ТЗ для команды — даже если разработка сайта сейчас не нужна.'],
+]
+
 function ArrowIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 20 20" width="20" height="20">
@@ -375,6 +381,24 @@ function App() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="marketing-only section" id="marketing" aria-labelledby="marketing-title" data-reveal>
+          <div className="marketing-only-copy">
+            <p className="eyebrow">Можно подключить без разработки</p>
+            <h2 id="marketing-title">Не всегда нужно начинать с нового сайта.</h2>
+            <p>Если проблема в стратегии, оффере или пути клиента, не буду предлагать разработку ради разработки. Могу подключиться к маркетинговой задаче отдельно и собрать понятный следующий шаг.</p>
+          </div>
+          <div className="marketing-task-list">
+            {marketingTasks.map(([number, title, text]) => (
+              <article className="marketing-task" key={number}>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <a className="text-link marketing-only-link" href="#contact">Обсудить маркетинговую задачу <ArrowIcon /></a>
         </section>
 
         <section className="process section" id="process" aria-labelledby="process-title" data-reveal data-scene="paper">
