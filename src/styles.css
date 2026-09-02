@@ -250,6 +250,59 @@ h1 em::after {
   color: var(--muted);
 }
 
+.positioning {
+  display: grid;
+  gap: 3rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-light);
+}
+
+.positioning-copy h2 {
+  max-width: 13ch;
+  margin-bottom: 1.35rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.15rem, 9vw, 4.35rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.positioning-copy > p:last-child {
+  max-width: 37rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.positioning-facts {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.positioning-facts div {
+  display: grid;
+  gap: 0.32rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.positioning-facts dt {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.positioning-facts dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .section {
   padding: 5.5rem 1.25rem;
 }
@@ -755,6 +808,30 @@ a:focus-visible,
     grid-column: 1 / -1;
   }
 
+  .positioning {
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.55fr);
+    align-items: end;
+    column-gap: 3rem;
+  }
+
+  .positioning-facts {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column: 1 / -1;
+  }
+
+  .positioning-facts div {
+    min-height: 10.5rem;
+    align-content: end;
+    padding: 1.5rem 1.25rem;
+    border-bottom: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .positioning-facts div:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
   .section-heading {
     grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.55fr);
     column-gap: 3rem;
@@ -844,6 +921,11 @@ a:focus-visible,
   .section {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+
+  .positioning {
+    padding-top: 7rem;
+    padding-bottom: 4.5rem;
   }
 
   .case-list {

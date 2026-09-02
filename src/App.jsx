@@ -7,23 +7,23 @@ import { TELEGRAM_URL } from './config.js'
 const services = [
   {
     number: '01',
-    title: 'Сайт с нуля',
-    text: 'Помогаю собрать структуру, визуальную подачу и рабочую версию — от первого экрана до форм.',
+    title: 'Маркетинговая основа',
+    text: 'Разбираю аудиторию, оффер и путь клиента, чтобы сайт говорил с нужными людьми и вёл к действию.',
   },
   {
     number: '02',
-    title: 'Доработка сайта',
-    text: 'Привожу в порядок мобильную версию, логику блоков, страницы, квизы и пользовательский путь.',
+    title: 'Сайт под задачу',
+    text: 'Собираю структуру, дизайн, адаптив, квизы и формы — от первого экрана до понятного пользовательского пути.',
   },
   {
     number: '03',
     title: 'Запуск и связки',
-    text: 'Подключаю домен, формы, базовую аналитику и проверяю основные сценарии перед запуском.',
+    text: 'Подключаю домен, формы и базовую аналитику, проверяю сценарии и помогаю встроить сайт в маркетинг.',
   },
 ]
 
 const process = [
-  ['01', 'Задача', 'Разбираю продукт, аудиторию и действие, к которому должен вести сайт.'],
+  ['01', 'Задача и маркетинг', 'Разбираю продукт, аудиторию, оффер и действие, к которому должен вести сайт.'],
   ['02', 'Структура', 'Собираю логику страницы и согласовываю направление без лишних экранов.'],
   ['03', 'Сборка', 'Делаю адаптивный интерфейс, формы и необходимые интеграции.'],
   ['04', 'Проверка', 'Прохожу ключевые сценарии на телефоне и компьютере перед передачей.'],
@@ -108,6 +108,7 @@ function App() {
           <small>сайты / digital</small>
         </a>
         <nav className="nav" aria-label="Основная навигация">
+          <a href="#approach">Подход</a>
           <a href="#cases">Кейсы</a>
           <a href="#services">Услуги</a>
           <a href="#process">Процесс</a>
@@ -119,24 +120,46 @@ function App() {
         <section className="hero" id="top">
           <div className="hero-index" aria-hidden="true">Портфолио · 2026</div>
           <div className="hero-copy">
-            <p className="eyebrow">Разработка · дизайн · запуск</p>
-            <h1>Сайты под задачу бизнеса — <em>от идеи</em> до работающего запуска</h1>
+            <p className="eyebrow">Ведущий маркетолог · сайты · запуск</p>
+            <h1>Сайты под задачу бизнеса — <em>от стратегии</em> до работающего запуска</h1>
           </div>
           <div className="hero-aside">
             <figure className="hero-portrait">
               <img src="/valeriy-parshin.jpg" alt="Валерий Паршин" />
               <figcaption>
                 <strong>Валерий Паршин</strong>
-                <span>Казань · удалённо</span>
+                <span>Ведущий маркетолог · 6 лет в digital</span>
               </figcaption>
             </figure>
-            <p>Я Валерий. Собираю структуру, дизайн и техническую часть и веду задачу без лишних посредников.</p>
+            <p>Я Валерий. Беру проект целиком: от понимания аудитории и оффера до сайта, аналитики и запуска.</p>
             <a className="text-link" href="#cases">Смотреть работы <ArrowIcon /></a>
           </div>
           <div className="hero-note">
             <span>Подхожу, если нужен не просто экран,</span>
-            <strong>а понятный рабочий инструмент.</strong>
+            <strong>а сайт, встроенный в маркетинг и продажи.</strong>
           </div>
+        </section>
+
+        <section className="positioning section" id="approach" aria-labelledby="approach-title">
+          <div className="positioning-copy">
+            <p className="eyebrow">Моя сильная сторона</p>
+            <h2 id="approach-title">Смотрю на сайт как на часть маркетинга, а не как на отдельную картинку.</h2>
+            <p>Шесть лет работаю в маркетинге и сейчас веду маркетинговые задачи. Поэтому начинаю не с макета, а с продукта, аудитории и того, что должно произойти после перехода на сайт.</p>
+          </div>
+          <dl className="positioning-facts">
+            <div>
+              <dt>6 лет</dt>
+              <dd>в маркетинге</dd>
+            </div>
+            <div>
+              <dt>Ведущий</dt>
+              <dd>маркетолог</dd>
+            </div>
+            <div>
+              <dt>Под ключ</dt>
+              <dd>от задачи до запуска</dd>
+            </div>
+          </dl>
         </section>
 
         <section className="cases section" id="cases" aria-labelledby="cases-title">
@@ -181,7 +204,7 @@ function App() {
         <section className="services section" id="services" aria-labelledby="services-title">
           <div className="section-heading compact">
             <p className="eyebrow">Чем могу помочь</p>
-            <h2 id="services-title">Собрать, улучшить или довести до запуска</h2>
+            <h2 id="services-title">Соединить маркетинг, сайт и запуск в одном проекте</h2>
           </div>
           <div className="service-list">
             {services.map((service) => (
