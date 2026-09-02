@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { cases } from './data/cases.js'
 import { TELEGRAM_URL } from './config.js'
 
@@ -50,18 +51,47 @@ function TelegramLink({ className = '', children }) {
   )
 }
 
-function BrowserFrame({ item }) {
+function CaseGallery({ item }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const activeImage = item.images[activeIndex]
+
+  const showPrevious = () => setActiveIndex((index) => (index - 1 + item.images.length) % item.images.length)
+  const showNext = () => setActiveIndex((index) => (index + 1) % item.images.length)
+
   return (
-    <a className="browser" href={item.url} target="_blank" rel="noreferrer" aria-label={`Открыть сайт ${item.name}`}>
-      <div className="browser-bar" aria-hidden="true">
-        <span className="browser-dots"><i /><i /><i /></span>
-        <span className="browser-address">{item.displayUrl}</span>
-        <span className="browser-open">↗</span>
+    <div className="case-gallery">
+      <a className="browser" href={item.url} target="_blank" rel="noreferrer" aria-label={`Открыть сайт ${item.name} в новой вкладке`}>
+        <div className="browser-bar" aria-hidden="true">
+          <span className="browser-dots"><i /><i /><i /></span>
+          <span className="browser-address">{item.displayUrl}</span>
+          <span className="browser-open">↗</span>
+        </div>
+        <div className="browser-viewport">
+          <img key={activeImage.src} src={activeImage.src} alt={activeImage.alt} loading="lazy" />
+          <span className="browser-visit">Открыть сайт <ArrowIcon /></span>
+        </div>
+      </a>
+      <div className="gallery-controls" aria-label={`Галерея проекта ${item.name}`}>
+        <button className="gallery-arrow" type="button" onClick={showPrevious} aria-label="Предыдущий экран">←</button>
+        <div className="gallery-thumbs" role="tablist" aria-label="Скриншоты проекта">
+          {item.images.map((image, index) => (
+            <button
+              className={`gallery-thumb${index === activeIndex ? ' is-active' : ''}`}
+              key={image.src}
+              type="button"
+              role="tab"
+              aria-selected={index === activeIndex}
+              aria-label={`Показать экран ${index + 1}`}
+              onClick={() => setActiveIndex(index)}
+            >
+              <img src={image.src} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+        <button className="gallery-arrow" type="button" onClick={showNext} aria-label="Следующий экран">→</button>
       </div>
-      <div className="browser-viewport">
-        <img src={item.image} alt={item.alt} loading="lazy" />
-      </div>
-    </a>
+      <p className="gallery-caption" aria-live="polite">Экран {activeIndex + 1} из {item.images.length} · нажмите на большой кадр, чтобы открыть сайт</p>
+    </div>
   )
 }
 
@@ -117,7 +147,7 @@ function App() {
           <div className="case-list">
             {cases.map((item) => (
               <article className="case" key={item.id}>
-                <BrowserFrame item={item} />
+                <CaseGallery item={item} />
                 <div className="case-copy">
                   <div className="case-meta">
                     <span>{item.number}</span>

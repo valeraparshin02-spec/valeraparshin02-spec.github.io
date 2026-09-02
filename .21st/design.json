@@ -65,6 +65,10 @@
     {
       "decision": "Use the real Telegram portrait as a compact editorial identity block in the hero.",
       "reason": "The portfolio should feel personal without competing with the large headline or case imagery."
+    },
+    {
+      "decision": "Use a 16:9 interactive case gallery with a live-site link and five real project screens per case.",
+      "reason": "Screenshots stay uncropped, work can be explored in context, and every project gets the same proof-led treatment."
     }
   ],
   "evidence": [],

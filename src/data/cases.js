@@ -1,13 +1,18 @@
+const gallery = (id, title) =>
+  Array.from({ length: 5 }, (_, index) => ({
+    src: `/cases/${id}/${String(index + 1).padStart(2, '0')}.png`,
+    alt: `${title} — экран ${index + 1}`,
+  }))
+
 export const cases = [
   {
-    id: 'neo-altera-estate',
+    id: 'altera-estate',
     number: '01',
-    name: 'Neo Altera Estate',
+    name: 'Altera Estate',
     type: 'Сайт агентства недвижимости',
     url: 'https://alteraestate.ru/',
     displayUrl: 'alteraestate.ru',
-    image: '/cases/neo-altera-estate.jpg',
-    alt: 'Последняя версия главной страницы Neo Altera Estate',
+    images: gallery('altera-estate', 'Altera Estate'),
     summary:
       'Полный редизайн основного сайта агентства недвижимости: премиальная главная с космическим образом Казани, каталогом и понятным путём к заявке.',
     contribution:
@@ -25,8 +30,7 @@ export const cases = [
     type: 'Корпоративный IT-сайт',
     url: 'https://alterait.com/',
     displayUrl: 'alterait.com',
-    image: '/cases/altera-it.jpg',
-    alt: 'Актуальная версия сайта Altera IT',
+    images: gallery('altera-it', 'Altera IT'),
     summary:
       'Корпоративный сайт IT-команды с выразительной арт-дирекцией, презентацией услуг и понятным маршрутом к заявке.',
     contribution:
@@ -44,8 +48,7 @@ export const cases = [
     type: 'Сайт, каталог и заявки',
     url: 'https://twin-line.ru/',
     displayUrl: 'twin-line.ru',
-    image: '/cases/twin-line.png',
-    alt: 'Главная страница сайта Твин Лайн',
+    images: gallery('twin-line', 'Твин Лайн'),
     summary:
       'Полностью разработан и запущен сайт производителя — от структуры и дизайна до каталога, товарных карточек и заявок.',
     contribution: 'Полная разработка сайта с нуля — структура, дизайн, адаптив, каталог, формы и запуск.',
@@ -64,8 +67,7 @@ export const cases = [
     displayUrl: 'domnatufana.ru',
     secondaryUrl: 'https://domnatufana.ru/quiz',
     secondaryLabel: 'Открыть квиз',
-    image: '/cases/dom-na-tufana.png',
-    alt: 'Главная страница жилого комплекса Дом на Туфана',
+    images: gallery('dom-na-tufana', 'Дом на Туфана'),
     summary:
       'Большой Tilda-проект жилого комплекса с выбором квартиры, квизом и обращением к менеджеру.',
     contribution: 'Моя часть проекта — поддержка, QA и доработка мобильного сценария.',
@@ -82,8 +84,7 @@ export const cases = [
     type: 'Экспертный продукт',
     url: 'https://tarohackersha.ru/',
     displayUrl: 'tarohackersha.ru',
-    image: '/cases/taro-hackersha.png',
-    alt: 'Главная страница проекта Таро Хакерша',
+    images: gallery('taro-hackersha', 'Таро Хакерша'),
     summary:
       'Сайт образовательного продукта, где личная подача автора соединена со структурой программы и понятными действиями.',
     delivered: [
@@ -99,8 +100,7 @@ export const cases = [
     type: 'Недвижимость',
     url: 'https://altera-novostroy.tilda.ws/',
     displayUrl: 'altera-novostroy.tilda.ws',
-    image: '/cases/altera-novostroy.jpg',
-    alt: 'Лендинг Альтеры по подбору новостроек',
+    images: gallery('altera-novostroy', 'Альтера · новостройки'),
     summary:
       'Направляющий лендинг для подбора новостройки: ключевые аргументы, варианты выбора и заявка на консультацию.',
     delivered: [
@@ -116,8 +116,7 @@ export const cases = [
     type: 'Недвижимость',
     url: 'https://altera-vtorichka.tilda.ws/',
     displayUrl: 'altera-vtorichka.tilda.ws',
-    image: '/cases/altera-vtorichka.jpg',
-    alt: 'Лендинг Альтеры по подбору вторичного жилья',
+    images: gallery('altera-vtorichka', 'Альтера · вторичка'),
     summary:
       'Отдельная посадочная страница направления вторичной недвижимости с последовательным сценарием обращения.',
     delivered: [
