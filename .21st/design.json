@@ -85,6 +85,10 @@
     {
       "decision": "Evolve the hero into a kinetic interaction layer with type-in lines, cursor-responsive spatial motion, and magnetic contact actions.",
       "reason": "Valeriy wants the site itself to prove a higher level of web craft; motion remains functional by keeping the message, cases, and contact path readable."
+    },
+    {
+      "decision": "Use a desktop cinematic scroll scene that pins the hero briefly and reshapes its headline, portrait, stickers, and orbit before the cases.",
+      "reason": "The selected next step is macro-motion: a directed transition gives the portfolio a showreel feeling without hiding the work or making mobile navigation harder."
     }
   ],
   "evidence": [],
