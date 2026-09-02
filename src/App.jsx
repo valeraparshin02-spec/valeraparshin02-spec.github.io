@@ -153,9 +153,10 @@ function App() {
     let sceneContext
     let sceneMedia
     let sceneDisposed = false
+    const siteShell = document.querySelector('.site-shell')
 
     void Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([gsapModule, scrollTriggerModule]) => {
-      if (sceneDisposed || !hero) return
+      if (sceneDisposed || !hero || !siteShell) return
 
       const gsap = gsapModule.gsap
       const ScrollTrigger = scrollTriggerModule.ScrollTrigger
@@ -208,7 +209,7 @@ function App() {
 
         sceneMedia.add('(min-width: 900px)', () => createCaseScenes(1))
         sceneMedia.add('(max-width: 899px)', () => createCaseScenes(0.58))
-      }, hero)
+      }, siteShell)
     })
 
     return () => {
