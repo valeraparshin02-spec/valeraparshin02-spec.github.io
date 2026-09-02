@@ -150,7 +150,47 @@ function App() {
     hero?.addEventListener('pointermove', onHeroPointerMove)
     hero?.addEventListener('pointerleave', resetHeroPointer)
 
+    let sceneContext
+    let sceneMedia
+    let sceneDisposed = false
+
+    void Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([gsapModule, scrollTriggerModule]) => {
+      if (sceneDisposed || !hero) return
+
+      const gsap = gsapModule.gsap
+      const ScrollTrigger = scrollTriggerModule.ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger)
+
+      sceneContext = gsap.context(() => {
+        sceneMedia = gsap.matchMedia()
+        sceneMedia.add('(min-width: 900px)', () => {
+          const timeline = gsap.timeline({
+            defaults: { ease: 'none' },
+            scrollTrigger: {
+              trigger: hero,
+              start: 'top top',
+              end: '+=90%',
+              pin: true,
+              scrub: 0.8,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          })
+
+          timeline
+            .to(hero.querySelector('.hero-copy'), { xPercent: -9, yPercent: -24, scale: 0.84, transformOrigin: 'left center' }, 0)
+            .to(hero.querySelector('.hero-aside'), { xPercent: 7, yPercent: -8, scale: 1.13, transformOrigin: 'center center' }, 0)
+            .to(hero.querySelector('.hero-stickers'), { yPercent: -30, rotate: 10 }, 0)
+            .to(hero.querySelector('.hero-orbit'), { scale: 2.45, opacity: 0.12 }, 0)
+            .to(hero.querySelector('.hero-note'), { yPercent: 52, opacity: 0 }, 0)
+        })
+      }, hero)
+    })
+
     return () => {
+      sceneDisposed = true
+      sceneMedia?.revert()
+      sceneContext?.revert()
       observer.disconnect()
       hero?.removeEventListener('pointermove', onHeroPointerMove)
       hero?.removeEventListener('pointerleave', resetHeroPointer)
