@@ -180,7 +180,7 @@ function App() {
                 trigger: scene,
                 start: 'top 125%',
                 end: scene.id === 'contact' ? 'bottom bottom' : 'top 8%',
-                scrub: 1.05,
+                scrub: scene.id === 'contact' ? 0.35 : 1.05,
                 invalidateOnRefresh: true,
               },
             })
