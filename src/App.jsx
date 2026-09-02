@@ -164,8 +164,9 @@ function App() {
 
       sceneContext = gsap.context(() => {
         sceneMedia = gsap.matchMedia()
-        const createCameraDive = ({ scale, blur }) => {
+        const createCameraDive = ({ scale, blur, skip = [] }) => {
           gsap.utils.toArray('[data-scene]').forEach((scene) => {
+            if (skip.includes(scene.id)) return
             gsap.fromTo(scene, {
               autoAlpha: 0.28,
               scale,
@@ -188,7 +189,7 @@ function App() {
         }
 
         sceneMedia.add('(min-width: 720px)', () => createCameraDive({ scale: 0.46, blur: 10 }))
-        sceneMedia.add('(max-width: 719px)', () => createCameraDive({ scale: 0.64, blur: 6 }))
+        sceneMedia.add('(max-width: 719px)', () => createCameraDive({ scale: 0.64, blur: 6, skip: ['cases'] }))
       }, siteShell)
     })
 
