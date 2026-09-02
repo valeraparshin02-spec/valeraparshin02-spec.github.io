@@ -228,21 +228,23 @@ function App() {
 
       <main id="main">
         <section className="hero" id="top">
-          <div className="hero-index" aria-hidden="true">01 / Портфолио · 2026</div>
+          <div className="hero-index" aria-hidden="true">01 / Сайт как инструмент продаж</div>
           <div className="hero-copy" data-reveal>
-            <p className="eyebrow"><i aria-hidden="true" />Ведущий маркетолог · сайты · запуск</p>
+            <p className="eyebrow"><i aria-hidden="true" />Сайт есть, а заявок мало?</p>
             <h1>
-              <span className="hero-line"><span>Сайты,</span></span>
-              <span className="hero-line"><span>которые</span></span>
-              <span className="hero-line"><em>работают.</em></span>
+              <span className="hero-line"><span>Сайт есть.</span></span>
+              <span className="hero-line"><span>Заявок</span></span>
+              <span className="hero-line"><em>нет.</em></span>
             </h1>
           </div>
           <div className="hero-aside" data-reveal>
+            <p>Сначала нахожу, где клиент теряется: в оффере, структуре или пути до заявки. Потом собираю сайт и запуск, которые эту проблему решают.</p>
+            <a className="text-link" href="#contact">Разобрать задачу <ArrowIcon /></a>
             <figure className="hero-portrait">
               <img src="/valeriy-parshin.png" alt="Валерий Паршин" />
               <figcaption>
                 <strong>Валерий Паршин</strong>
-                <span>Ведущий маркетолог · 6 лет в digital</span>
+                <span>Маркетинг + сайты · 6 лет в digital</span>
               </figcaption>
               <div className="hero-signal" aria-label="6 лет в маркетинге" data-reveal>
                 <strong>6</strong>
@@ -254,13 +256,11 @@ function App() {
                 <span className="hero-sticker hero-sticker--spark">✦</span>
               </div>
             </figure>
-            <p>Я Валерий. Беру проект целиком: от понимания аудитории и оффера до сайта, аналитики и запуска.</p>
-            <a className="text-link" href="#cases">Смотреть работы <ArrowIcon /></a>
           </div>
           <span className="hero-orbit" aria-hidden="true" />
           <div className="hero-note" data-reveal>
-            <span>От маркетинговой стратегии до запуска:</span>
-            <strong>не просто экран, а сайт, встроенный в продажи.</strong>
+            <span>Что получаете на выходе:</span>
+            <strong>понятный оффер, путь к заявке и сайт, встроенный в продажи.</strong>
           </div>
         </section>
 
@@ -277,22 +277,22 @@ function App() {
 
         <section className="positioning section" id="approach" aria-labelledby="approach-title" data-reveal data-scene="cobalt">
           <div className="positioning-copy">
-            <p className="eyebrow">Моя сильная сторона</p>
-            <h2 id="approach-title">Смотрю на сайт как на часть маркетинга, а не как на отдельную картинку.</h2>
-            <p>Шесть лет работаю в маркетинге и сейчас веду маркетинговые задачи. Поэтому начинаю не с макета, а с продукта, аудитории и того, что должно произойти после перехода на сайт.</p>
+            <p className="eyebrow">Что делаю с этой проблемой</p>
+            <h2 id="approach-title">Превращаю сайт из красивой страницы в понятный путь к заявке.</h2>
+            <p>Не начинаю с макета. Сначала разбираю продукт, аудиторию и действие, которого ждём от человека. Потом формулирую оффер, собираю логику страницы и только после этого делаю дизайн и запуск.</p>
           </div>
           <dl className="positioning-facts">
             <div>
-              <dt>6 лет</dt>
-              <dd>в маркетинге</dd>
+              <dt>01</dt>
+              <dd>Находим, где теряются заявки</dd>
             </div>
             <div>
-              <dt>Ведущий</dt>
-              <dd>маркетолог</dd>
+              <dt>02</dt>
+              <dd>Собираем оффер и путь клиента</dd>
             </div>
             <div>
-              <dt>Под ключ</dt>
-              <dd>от задачи до запуска</dd>
+              <dt>03</dt>
+              <dd>Делаем сайт и запускаем связку</dd>
             </div>
           </dl>
         </section>

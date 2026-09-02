@@ -89,6 +89,10 @@
     {
       "decision": "Use a continuous camera-dive transition: each major section begins distant and soft, then scales into its final surface in direct response to scrolling.",
       "reason": "The intended feeling is a Google Earth-style descent into the next layer of the site, not a separate overlay or a discrete card animation."
+    },
+    {
+      "decision": "Lead the portfolio with the client's conversion problem and the resolution path, then introduce Valeriy and his experience as proof.",
+      "reason": "The site should sell useful business outcomes before presenting credentials, avoiding repeated self-description in the first screen."
     }
   ],
   "evidence": [],

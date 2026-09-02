@@ -61,6 +61,7 @@ h1 em::after { position: absolute; z-index: -1; right: -0.06em; bottom: -0.09em;
 .hero-portrait figcaption strong { font: 700 0.88rem/1.1 var(--display); letter-spacing: -0.06em; text-transform: none; }
 .hero-portrait figcaption span { color: var(--muted); }
 .hero-aside > p { max-width: 28rem; margin-bottom: 1.2rem; font-size: 0.96rem; line-height: 1.65; }
+.hero-aside > .text-link + .hero-portrait { margin-top: 2.2rem; }
 .text-link { position: relative; padding: 0.2rem 0.05rem 0.34rem; border-bottom: 2px solid var(--ink); color: var(--ink); }
 .text-link::before { position: absolute; z-index: -1; right: 0; bottom: 0; left: 0; height: 0; background: var(--acid); content: ''; transition: height 180ms ease; }
 .text-link:hover::before { height: 100%; }
