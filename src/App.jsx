@@ -346,6 +346,7 @@ function App() {
                   </div>
                   <h3>{item.name}</h3>
                   <p className="case-summary">{item.summary}</p>
+                  {item.note && <p className="case-note">* {item.note}</p>}
                   {item.contribution && <p className="case-contribution">{item.contribution}</p>}
                   <div className="delivered">
                     <h4>Что реализовано</h4>

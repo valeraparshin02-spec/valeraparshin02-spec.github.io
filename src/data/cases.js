@@ -10,11 +10,12 @@ export const cases = [
     number: '01',
     name: 'Altera Estate',
     type: 'Сайт агентства недвижимости',
-    url: 'https://alteraestate.ru/',
-    displayUrl: 'alteraestate.ru',
+    url: 'https://new.alteraestate.ru/',
+    displayUrl: 'new.alteraestate.ru',
     images: gallery('altera-estate', 'Altera Estate'),
     summary:
       'Полный редизайн основного сайта агентства недвижимости: премиальная главная с космическим образом Казани, каталогом и понятным путём к заявке.',
+    note: 'Сайт находится в процессе переноса: в кейсе показана новая версия.',
     contribution:
       'Полная разработка сайта — стратегия, структура, дизайн, адаптив, каталог, формы и техническая реализация.',
     delivered: [
