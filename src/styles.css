@@ -39,16 +39,19 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .header-contact { min-height: 42px; padding: 0.6rem 0.7rem; border: var(--line); border-radius: 999px; background: var(--acid); box-shadow: 3px 3px 0 var(--ink); transition: transform 180ms ease, box-shadow 180ms ease; }
 .header-contact svg { width: 16px; }
 .header-contact:hover { box-shadow: 0 0 0 var(--ink); transform: translate(3px, 3px); }
+[data-magnetic] { translate: var(--magnetic-x, 0px) var(--magnetic-y, 0px); transition: translate 260ms cubic-bezier(.16, 1, .3, 1), transform 180ms ease, box-shadow 180ms ease; }
 
 .hero { position: relative; display: grid; min-height: calc(100svh - 76px); padding: 1.65rem 1.25rem 2rem; overflow: hidden; isolation: isolate; border-bottom: var(--line); background: var(--milk); }
-.hero::before { position: absolute; z-index: -1; top: -12rem; right: -12rem; width: min(58vw, 50rem); aspect-ratio: 1; border: 2px solid var(--ink); border-radius: 50%; background: var(--cobalt); content: ''; }
+.hero::before { position: absolute; z-index: -1; top: -12rem; right: -12rem; width: min(58vw, 50rem); aspect-ratio: 1; border: 2px solid var(--ink); border-radius: 50%; background: var(--cobalt); translate: var(--hero-shift-x, 0px) var(--hero-shift-y, 0px); content: ''; transition: translate 600ms cubic-bezier(.16, 1, .3, 1); }
 .hero::after { position: absolute; z-index: -1; right: 18%; bottom: 13%; width: 48px; height: 48px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 10px color-mix(in srgb, var(--coral) 22%, transparent); content: ''; }
 .hero-index { color: var(--muted); font: 600 0.63rem/1 var(--mono); letter-spacing: 0.09em; text-transform: uppercase; }
-.hero-copy { align-self: center; margin: 3.3rem 0 2.6rem; }
+.hero-copy { position: relative; z-index: 1; align-self: center; margin: 3.3rem 0 2.6rem; }
 .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; margin: 0 0 1.2rem; color: var(--cobalt); font: 600 0.66rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
 .eyebrow > i { width: 8px; height: 8px; box-shadow: none; }
 h1, h2 { font-family: var(--display); font-weight: 700; letter-spacing: -0.07em; text-wrap: balance; }
 h1 { max-width: 11.5ch; margin-bottom: 0; font-size: clamp(2.45rem, 12vw, 7.4rem); line-height: 0.95; }
+.hero-line { display: block; overflow: clip; }
+.hero-line > * { display: inline-block; }
 h1 em { position: relative; display: inline-block; color: var(--cobalt); font-style: normal; }
 h1 em::after { position: absolute; z-index: -1; right: -0.06em; bottom: -0.09em; left: -0.04em; height: 0.17em; background: var(--acid); transform: rotate(-2deg); content: ''; }
 .hero-aside { position: relative; z-index: 1; max-width: 27rem; align-self: end; }
@@ -71,7 +74,9 @@ h1 em::after { position: absolute; z-index: -1; right: -0.06em; bottom: -0.09em;
 .hero-sticker--roi { right: 2rem; bottom: 18%; width: 3.4rem; height: 3.4rem; border-radius: 50%; background: var(--acid); transform: rotate(-12deg); }
 .hero-sticker--arrow { right: 15%; bottom: 8%; width: 2.65rem; height: 2.65rem; border-radius: 8px; background: var(--milk); font: 800 1.35rem/1 var(--display); transform: rotate(9deg); }
 .hero-sticker--spark { top: 18%; left: 53%; width: 2.45rem; height: 2.45rem; border-radius: 50%; color: var(--milk); background: var(--coral); font-size: 1.2rem; transform: rotate(-16deg); }
-.hero-note { display: grid; gap: 0.28rem; align-self: end; margin-top: 3rem; padding-top: 1rem; border-top: var(--line); font: 600 0.62rem/1.4 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; }
+.hero-orbit { position: absolute; z-index: 0; top: var(--hero-pointer-y, 75%); left: var(--hero-pointer-x, 71%); width: clamp(6rem, 11vw, 10rem); aspect-ratio: 1; border: 2px dashed color-mix(in srgb, var(--milk) 72%, transparent); border-radius: 50%; opacity: 0.7; pointer-events: none; translate: -50% -50%; transition: top 640ms cubic-bezier(.16, 1, .3, 1), left 640ms cubic-bezier(.16, 1, .3, 1); }
+.hero-orbit::before, .hero-orbit::after { position: absolute; border-radius: 50%; content: ''; }.hero-orbit::before { top: -0.35rem; left: 22%; width: 0.75rem; height: 0.75rem; background: var(--acid); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acid) 25%, transparent); }.hero-orbit::after { right: 4%; bottom: 14%; width: 0.45rem; height: 0.45rem; background: var(--milk); }
+.hero-note { position: relative; z-index: 1; display: grid; gap: 0.28rem; align-self: end; margin-top: 3rem; padding-top: 1rem; border-top: var(--line); font: 600 0.62rem/1.4 var(--mono); letter-spacing: 0.07em; text-transform: uppercase; }
 .hero-note span { color: var(--muted); }.hero-note strong { max-width: 42ch; }
 .signal-strip { display: flex; width: 100vw; min-height: 54px; align-items: center; margin-left: calc(50% - 50vw); overflow: hidden; border-bottom: var(--line); color: var(--milk); background: var(--ink); white-space: nowrap; }
 .signal-track { display: flex; width: max-content; align-items: stretch; animation: signal-marquee 22s linear infinite; will-change: transform; }
@@ -104,7 +109,7 @@ a:focus-visible, .is-disabled:focus-visible, .gallery-arrow:focus-visible, .gall
 .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
 .motion-ready .hero-copy { transition-delay: 80ms; }.motion-ready .hero-aside { transition-delay: 240ms; }.motion-ready .hero-note { transition-delay: 380ms; }
 .motion-ready .hero-signal { transform: rotate(10deg) translateY(28px) scale(.82); transition-delay: 170ms; }.motion-ready .hero-signal.is-visible { transform: rotate(10deg) translateY(0) scale(1); }
-.motion-ready .hero::before { animation: blue-drift 10s ease-in-out infinite; }.motion-ready .hero-signal.is-visible { animation: signal-float 4s ease-in-out 900ms infinite; }.motion-ready .hero-portrait img { animation: portrait-pop 900ms cubic-bezier(.16, 1, .3, 1) 360ms both; }.motion-ready .hero-sticker--roi { animation: sticker-drift 5.2s ease-in-out infinite; }.motion-ready .hero-sticker--arrow { animation: sticker-drift 4.4s ease-in-out 500ms infinite reverse; }.motion-ready .hero-sticker--spark { animation: sticker-spin 7s linear infinite; }
+.motion-ready .hero::before { animation: blue-drift 10s ease-in-out infinite; }.motion-ready .hero-signal.is-visible { animation: signal-float 4s ease-in-out 900ms infinite; }.motion-ready .hero-portrait img { animation: portrait-pop 900ms cubic-bezier(.16, 1, .3, 1) 360ms both; }.motion-ready .hero-sticker--roi { animation: sticker-drift 5.2s ease-in-out infinite; }.motion-ready .hero-sticker--arrow { animation: sticker-drift 4.4s ease-in-out 500ms infinite reverse; }.motion-ready .hero-sticker--spark { animation: sticker-spin 7s linear infinite; }.motion-ready .hero-orbit { animation: orbit-spin 16s linear infinite; }.motion-ready .hero-copy.is-visible .hero-line > * { animation: title-rise 760ms cubic-bezier(.16, 1, .3, 1) both; }.motion-ready .hero-copy.is-visible .hero-line:nth-child(1) > * { animation-delay: 80ms; }.motion-ready .hero-copy.is-visible .hero-line:nth-child(2) > * { animation-delay: 180ms; }.motion-ready .hero-copy.is-visible .hero-line:nth-child(3) > * { animation-delay: 280ms; }
 .motion-ready .case[data-reveal] { transition-delay: 80ms; }.motion-ready .case:nth-child(2n)[data-reveal] { transition-delay: 150ms; }
 .browser:hover { transform: perspective(1000px) translate(-5px, -5px) rotate(-0.5deg); }.case:nth-child(even) .browser:hover { transform: perspective(1000px) translate(-5px, -5px) rotate(0.5deg); }
 
@@ -115,6 +120,8 @@ a:focus-visible, .is-disabled:focus-visible, .gallery-arrow:focus-visible, .gall
 @keyframes sticker-drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
 @keyframes sticker-spin { to { rotate: 360deg; } }
 @keyframes contact-ping { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--acid) 65%, transparent); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
+@keyframes title-rise { from { opacity: 0; transform: translateY(115%) rotate(3deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+@keyframes orbit-spin { to { rotate: 360deg; } }
 
 @media (min-width: 720px) {
   .header, .hero, .section, .footer { padding-right: 3rem; padding-left: 3rem; }

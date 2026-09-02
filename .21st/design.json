@@ -81,6 +81,10 @@
     {
       "decision": "Use staged reveal, an animated signal ring, a continuous strategy-to-leads ticker, and tactile case hover motion as the motion language.",
       "reason": "Motion should demonstrate craft and guide attention without hiding content; all effects respect the reduced-motion preference."
+    },
+    {
+      "decision": "Evolve the hero into a kinetic interaction layer with type-in lines, cursor-responsive spatial motion, and magnetic contact actions.",
+      "reason": "Valeriy wants the site itself to prove a higher level of web craft; motion remains functional by keeping the message, cases, and contact path readable."
     }
   ],
   "evidence": [],

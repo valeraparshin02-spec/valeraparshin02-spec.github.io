@@ -37,17 +37,17 @@ function ArrowIcon() {
   )
 }
 
-function TelegramLink({ className = '', children }) {
+function TelegramLink({ className = '', children, ...props }) {
   if (!TELEGRAM_URL) {
     return (
-      <span className={`${className} is-disabled`} aria-disabled="true" title="Контакт будет добавлен перед публикацией">
+      <span className={`${className} is-disabled`} aria-disabled="true" title="Контакт будет добавлен перед публикацией" {...props}>
         {children}
       </span>
     )
   }
 
   return (
-    <a className={className} href={TELEGRAM_URL} target="_blank" rel="noreferrer">
+    <a className={className} href={TELEGRAM_URL} target="_blank" rel="noreferrer" {...props}>
       {children}
     </a>
   )
@@ -114,8 +114,50 @@ function App() {
     }, { threshold: 0.14 })
 
     targets.forEach((target) => observer.observe(target))
+
+    const hero = document.querySelector('.hero')
+    const magneticTargets = document.querySelectorAll('[data-magnetic]')
+    const onHeroPointerMove = (event) => {
+      if (!hero) return
+      const { left, top, width, height } = hero.getBoundingClientRect()
+      const x = (event.clientX - left) / width
+      const y = (event.clientY - top) / height
+      hero.style.setProperty('--hero-pointer-x', `${Math.min(Math.max(x, 0), 1) * 100}%`)
+      hero.style.setProperty('--hero-pointer-y', `${Math.min(Math.max(y, 0), 1) * 100}%`)
+      hero.style.setProperty('--hero-shift-x', `${(0.5 - x) * 20}px`)
+      hero.style.setProperty('--hero-shift-y', `${(0.5 - y) * 16}px`)
+    }
+    const resetHeroPointer = () => {
+      hero?.style.removeProperty('--hero-pointer-x')
+      hero?.style.removeProperty('--hero-pointer-y')
+      hero?.style.removeProperty('--hero-shift-x')
+      hero?.style.removeProperty('--hero-shift-y')
+    }
+    const magneticHandlers = Array.from(magneticTargets).map((target) => {
+      const onPointerMove = (event) => {
+        const { left, top, width, height } = target.getBoundingClientRect()
+        target.style.setProperty('--magnetic-x', `${(event.clientX - left - width / 2) * 0.12}px`)
+        target.style.setProperty('--magnetic-y', `${(event.clientY - top - height / 2) * 0.12}px`)
+      }
+      const resetMagnet = () => {
+        target.style.removeProperty('--magnetic-x')
+        target.style.removeProperty('--magnetic-y')
+      }
+      target.addEventListener('pointermove', onPointerMove)
+      target.addEventListener('pointerleave', resetMagnet)
+      return { target, onPointerMove, resetMagnet }
+    })
+    hero?.addEventListener('pointermove', onHeroPointerMove)
+    hero?.addEventListener('pointerleave', resetHeroPointer)
+
     return () => {
       observer.disconnect()
+      hero?.removeEventListener('pointermove', onHeroPointerMove)
+      hero?.removeEventListener('pointerleave', resetHeroPointer)
+      magneticHandlers.forEach(({ target, onPointerMove, resetMagnet }) => {
+        target.removeEventListener('pointermove', onPointerMove)
+        target.removeEventListener('pointerleave', resetMagnet)
+      })
       document.documentElement.classList.remove('motion-ready')
     }
   }, [])
@@ -135,7 +177,7 @@ function App() {
           <a href="#services">Услуги</a>
           <a href="#process">Процесс</a>
         </nav>
-        <a className="header-contact" href="#contact">Обсудить задачу <ArrowIcon /></a>
+        <a className="header-contact" href="#contact" data-magnetic>Обсудить задачу <ArrowIcon /></a>
       </header>
 
       <main id="main">
@@ -143,7 +185,11 @@ function App() {
           <div className="hero-index" aria-hidden="true">01 / Портфолио · 2026</div>
           <div className="hero-copy" data-reveal>
             <p className="eyebrow"><i aria-hidden="true" />Ведущий маркетолог · сайты · запуск</p>
-            <h1>Сайты, которые <em>работают.</em></h1>
+            <h1>
+              <span className="hero-line"><span>Сайты,</span></span>
+              <span className="hero-line"><span>которые</span></span>
+              <span className="hero-line"><em>работают.</em></span>
+            </h1>
           </div>
           <div className="hero-aside" data-reveal>
             <figure className="hero-portrait">
@@ -165,6 +211,7 @@ function App() {
             <span className="hero-sticker hero-sticker--arrow">↗</span>
             <span className="hero-sticker hero-sticker--spark">✦</span>
           </div>
+          <span className="hero-orbit" aria-hidden="true" />
           <div className="hero-note" data-reveal>
             <span>От маркетинговой стратегии до запуска:</span>
             <strong>не просто экран, а сайт, встроенный в продажи.</strong>
@@ -278,12 +325,12 @@ function App() {
           <p className="eyebrow">Есть задача?</p>
           <h2 id="contact-title">Покажите, что нужно сделать. Я предложу понятный следующий шаг.</h2>
           <p className="contact-copy">Можно прислать ссылку на текущий сайт, короткое ТЗ или просто описать задачу своими словами.</p>
-          <TelegramLink className="contact-button">Написать в Telegram <ArrowIcon /></TelegramLink>
+          <TelegramLink className="contact-button" data-magnetic>Написать в Telegram <ArrowIcon /></TelegramLink>
           {!TELEGRAM_URL && <small className="contact-todo">Точная ссылка на Telegram будет добавлена перед публикацией.</small>}
         </section>
       </main>
 
-      <TelegramLink className="floating-contact">
+      <TelegramLink className="floating-contact" data-magnetic>
         <span className="floating-contact-dot" aria-hidden="true" />
         Написать мне <ArrowIcon />
       </TelegramLink>
