@@ -244,18 +244,18 @@ function App() {
                 <strong>Валерий Паршин</strong>
                 <span>Ведущий маркетолог · 6 лет в digital</span>
               </figcaption>
+              <div className="hero-signal" aria-label="6 лет в маркетинге" data-reveal>
+                <strong>6</strong>
+                <span>лет<br />в маркетинге</span>
+              </div>
+              <div className="hero-stickers" aria-hidden="true">
+                <span className="hero-sticker hero-sticker--roi">ROI</span>
+                <span className="hero-sticker hero-sticker--arrow">↗</span>
+                <span className="hero-sticker hero-sticker--spark">✦</span>
+              </div>
             </figure>
             <p>Я Валерий. Беру проект целиком: от понимания аудитории и оффера до сайта, аналитики и запуска.</p>
             <a className="text-link" href="#cases">Смотреть работы <ArrowIcon /></a>
-          </div>
-          <div className="hero-signal" aria-label="6 лет в маркетинге" data-reveal>
-            <strong>6</strong>
-            <span>лет<br />в маркетинге</span>
-          </div>
-          <div className="hero-stickers" aria-hidden="true">
-            <span className="hero-sticker hero-sticker--roi">ROI</span>
-            <span className="hero-sticker hero-sticker--arrow">↗</span>
-            <span className="hero-sticker hero-sticker--spark">✦</span>
           </div>
           <span className="hero-orbit" aria-hidden="true" />
           <div className="hero-note" data-reveal>
