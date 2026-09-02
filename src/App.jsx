@@ -147,7 +147,7 @@ function App() {
           </div>
           <div className="hero-aside" data-reveal>
             <figure className="hero-portrait">
-              <img src="/valeriy-parshin.jpg" alt="Валерий Паршин" />
+              <img src="/valeriy-parshin.png" alt="Валерий Паршин" />
               <figcaption>
                 <strong>Валерий Паршин</strong>
                 <span>Ведущий маркетолог · 6 лет в digital</span>
