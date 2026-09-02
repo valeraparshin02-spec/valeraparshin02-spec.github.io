@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { cases } from './data/cases.js'
 import { TELEGRAM_URL } from './config.js'
