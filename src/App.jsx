@@ -291,7 +291,7 @@ function App() {
 
           <div className="case-list">
             {cases.map((item) => (
-              <article className="case" key={item.id} data-reveal>
+              <article className="case" key={item.id}>
                 <CaseGallery item={item} />
                 <div className="case-copy">
                   <div className="case-meta">
