@@ -180,53 +180,7 @@ function App() {
       return { link, onNavigate }
     })
 
-    let sceneContext
-    let sceneMedia
-    let sceneDisposed = false
-    const siteShell = document.querySelector('.site-shell')
-
-    void Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([gsapModule, scrollTriggerModule]) => {
-      if (sceneDisposed || !hero || !siteShell) return
-
-      const gsap = gsapModule.gsap
-      const ScrollTrigger = scrollTriggerModule.ScrollTrigger
-      gsap.registerPlugin(ScrollTrigger)
-
-      sceneContext = gsap.context(() => {
-        sceneMedia = gsap.matchMedia()
-        const createCameraDive = ({ scale, blur, skip = [] }) => {
-          gsap.utils.toArray('[data-scene]').forEach((scene) => {
-            if (skip.includes(scene.id)) return
-            gsap.fromTo(scene, {
-              autoAlpha: 0.28,
-              scale,
-              filter: `blur(${blur}px)`,
-              transformOrigin: '50% 50%',
-            }, {
-              autoAlpha: 1,
-              scale: 1,
-              filter: 'blur(0px)',
-              ease: 'none',
-              scrollTrigger: {
-                trigger: scene,
-                start: 'top 125%',
-                end: scene.id === 'contact' ? 'bottom bottom' : 'top 8%',
-                scrub: scene.id === 'contact' ? 0.35 : 1.05,
-                invalidateOnRefresh: true,
-              },
-            })
-          })
-        }
-
-        sceneMedia.add('(min-width: 720px)', () => createCameraDive({ scale: 0.46, blur: 10 }))
-        sceneMedia.add('(max-width: 719px)', () => createCameraDive({ scale: 0.64, blur: 6, skip: ['cases'] }))
-      }, siteShell)
-    })
-
     return () => {
-      sceneDisposed = true
-      sceneMedia?.revert()
-      sceneContext?.revert()
       observer.disconnect()
       hero?.removeEventListener('pointermove', onHeroPointerMove)
       hero?.removeEventListener('pointerleave', resetHeroPointer)
@@ -306,7 +260,7 @@ function App() {
           </div>
         </div>
 
-        <section className="positioning section" id="approach" aria-labelledby="approach-title" data-reveal data-scene="cobalt">
+        <section className="positioning section" id="approach" aria-labelledby="approach-title" data-scene="cobalt">
           <div className="positioning-copy">
             <p className="eyebrow">Что делаю с этой проблемой</p>
             <h2 id="approach-title">Превращаю сайт из красивой страницы в понятный путь к заявке.</h2>
@@ -328,7 +282,7 @@ function App() {
           </dl>
         </section>
 
-        <section className="cases section" id="cases" aria-labelledby="cases-title" data-reveal data-scene="milk">
+        <section className="cases section" id="cases" aria-labelledby="cases-title" data-scene="milk">
           <div className="section-heading">
             <p className="eyebrow">Выбранные работы</p>
             <h2 id="cases-title">Живые сайты, которые можно открыть</h2>
@@ -368,7 +322,7 @@ function App() {
           </div>
         </section>
 
-        <section className="services section" id="services" aria-labelledby="services-title" data-reveal data-scene="paper">
+        <section className="services section" id="services" aria-labelledby="services-title" data-scene="paper">
           <div className="section-heading compact">
             <p className="eyebrow">Чем могу помочь</p>
             <h2 id="services-title">Соединить маркетинг, сайт и запуск в одном проекте</h2>
@@ -384,7 +338,7 @@ function App() {
           </div>
         </section>
 
-        <section className="marketing-only section" id="marketing" aria-labelledby="marketing-title" data-reveal>
+        <section className="marketing-only section" id="marketing" aria-labelledby="marketing-title">
           <div className="marketing-only-copy">
             <p className="eyebrow">Можно подключить без разработки</p>
             <h2 id="marketing-title">Не всегда нужно начинать с нового сайта.</h2>
@@ -402,7 +356,7 @@ function App() {
           <a className="text-link marketing-only-link" href="#contact">Обсудить маркетинговую задачу <ArrowIcon /></a>
         </section>
 
-        <section className="process section" id="process" aria-labelledby="process-title" data-reveal data-scene="paper">
+        <section className="process section" id="process" aria-labelledby="process-title" data-scene="paper">
           <div className="section-heading compact">
             <p className="eyebrow">Как строится работа</p>
             <h2 id="process-title">Один человек, один контекст, четыре понятных этапа</h2>
@@ -417,7 +371,7 @@ function App() {
           </ol>
         </section>
 
-        <section className="contact section" id="contact" aria-labelledby="contact-title" data-reveal data-scene="ink">
+        <section className="contact section" id="contact" aria-labelledby="contact-title" data-scene="ink">
           <p className="eyebrow">Есть задача?</p>
           <h2 id="contact-title">Покажите, что нужно сделать. Я предложу понятный следующий шаг.</h2>
           <p className="contact-copy">Можно прислать ссылку на текущий сайт, короткое ТЗ или просто описать задачу своими словами.</p>
