@@ -1,6 +1,6 @@
 const gallery = (id, title) =>
   Array.from({ length: 5 }, (_, index) => ({
-    src: `/cases/${id}/${String(index + 1).padStart(2, '0')}.png`,
+    src: `/cases/${id}/${String(index + 1).padStart(2, '0')}.webp`,
     alt: `${title} — экран ${index + 1}`,
   }))
 

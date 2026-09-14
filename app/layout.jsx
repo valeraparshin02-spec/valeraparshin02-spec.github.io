@@ -1,12 +1,13 @@
-import '../src/styles.css'
+import '../src/portfolio.css'
 
-const title = 'Валерий Паршин — сайты под задачу бизнеса'
-const description = 'Портфолио Валерия Паршина: разработка, дизайн и запуск сайтов.'
+const title = 'Валерий Паршин — маркетинг, сайты и запуск'
+const description = 'Соединяю маркетинг, дизайн и разработку. Реальные проекты, понятный процесс и прямая связь.'
 
 export const metadata = {
   metadataBase: new URL('https://valeriy-parshin-portfolio.valeraparshin02.chatgpt.site'),
   title,
   description,
+  icons: { icon: '/favicon.svg' },
   openGraph: {
     title,
     description,
